@@ -34,7 +34,7 @@ public class Inicio extends AppCompatActivity implements View.OnClickListener {
         id=b.getInt("Id");
         dao= new daoUsuario(this);
         u=dao.getUsuarioById(id);
-        nombre.setText(u.getNombre()+""+u.getApellidos());
+
 
     }
 

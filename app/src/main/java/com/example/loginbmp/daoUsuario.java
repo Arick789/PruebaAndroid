@@ -13,13 +13,14 @@ public class daoUsuario {
     ArrayList<Usuario> lista;
     SQLiteDatabase sql;
     String bd="BDUsuarios";
-    String tabla="create table if not exists usuario(id integer primary key autoincrement, usuario text, pass text, email text, nombre text, apell text )";
+    String tabla="create table if not exists usuarioa(id integer primary key autoincrement, usuario text, pass text, email text, nombre text, apell text )";
 
     public daoUsuario(Context c){
         this.c=c;
         sql=c.openOrCreateDatabase(bd, c.MODE_PRIVATE, null);
         sql.execSQL(tabla);
         u=new Usuario();
+
     }
 
     public boolean insertUsuario(Usuario u){
@@ -30,7 +31,7 @@ public class daoUsuario {
             cv.put("email", u.getEmail());
             cv.put("nombre", u.getNombre());
             cv.put("apell", u.getApellidos());
-            return (sql.insert("email", null,cv)>0);
+            return (sql.insert("usuarioa", null,cv)>0);
 
         }else{
             return false;
@@ -53,7 +54,7 @@ public class daoUsuario {
     public ArrayList<Usuario> selectUsuarios(){
         ArrayList<Usuario> lista =new ArrayList<Usuario>();
         lista.clear();
-        Cursor cr = sql.rawQuery("select * from usuario", null);
+        Cursor cr = sql.rawQuery("select * from usuarioa", null);
         if (cr!=null&&cr.moveToFirst()){
             do {
                 Usuario u = new Usuario();
@@ -72,7 +73,7 @@ public class daoUsuario {
 
     public int login(String u, String p){
         int a=0;
-        Cursor cr = sql.rawQuery("select * from usuario", null);
+        Cursor cr = sql.rawQuery("select * from usuarioa", null);
         if (cr!=null&&cr.moveToFirst()){
             do {
                 if (cr.getString(1).equals(u)&&cr.getString(2).equals(p)){
