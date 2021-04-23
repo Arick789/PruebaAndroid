@@ -1,5 +1,5 @@
 # PruebaAndroid
-El proyecto maneja 6 archivos java que son las clases, las cuales son:
+El proyecto maneja 6 archivos java que son las clases, y los archivos xml; las clases son:
 Main: es el que contiene el login
 Registro: es donde el usuario se puede registrar
 Inicio: es a la pantalla que la app accede si se hizo el login correctamente
