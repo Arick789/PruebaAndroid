@@ -4,9 +4,11 @@ public class Usuario {
     int Id;
     String Usuario, Nombre, Apellidos, Email, Password;
 
+    //Método constructor de la clase usuario
     public Usuario() {
     }
 
+    //Método constructor para inicializar los atributos
     public Usuario(String usuario, String nombre, String apellidos, String email, String password) {
         Usuario = usuario;
         Nombre = nombre;
@@ -15,6 +17,7 @@ public class Usuario {
         Password = password;
     }
 
+    //Método para validar si están vacios los campos
     public boolean isNull(){
         if (Usuario.equals("")&&Nombre.equals("")&&Apellidos.equals("")&&Email.equals("")&&Password.equals("")){
             return false;
@@ -23,6 +26,7 @@ public class Usuario {
         }
     }
 
+    //Método toString que permite imprimir los datos de clase
     @Override
     public String toString() {
         return "Usuario{" +
@@ -35,6 +39,9 @@ public class Usuario {
                 '}';
     }
 
+    //Getter and Setter de cada atributo
+    //Setter es para establecer un parametro
+    //Getter es para mostrar el parametro
     public int getId() {
         return Id;
     }

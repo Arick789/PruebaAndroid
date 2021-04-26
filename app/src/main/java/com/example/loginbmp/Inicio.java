@@ -19,21 +19,26 @@ public class Inicio extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
+        //Enlazamos las variables con sus respectivos botones o entradas
         nombre=(TextView)findViewById(R.id.nombreUsuario);
         btnEditar=(Button)findViewById(R.id.btnEditar);
         btnEliminar=(Button)findViewById(R.id.btnEliminar);
         btnMostrar=(Button)findViewById(R.id.btnMostrar);
         btnSalir=(Button)findViewById(R.id.btnSalir);
 
+        //Se asignan los eventos
         btnEditar.setOnClickListener(this);
         btnEliminar.setOnClickListener(this);
         btnMostrar.setOnClickListener(this);
         btnSalir.setOnClickListener(this);
 
+        /*Cambiar los valores originales de un elemento
+        * Aún no está en funcionamiento*/
         Bundle b=getIntent().getExtras();
         id=b.getInt("Id");
         dao= new daoUsuario(this);
         u=dao.getUsuarioById(id);
+        //nombre.setText(u.getNombre()+""+u.getApellidos());
 
 
     }

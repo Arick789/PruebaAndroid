@@ -20,12 +20,14 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        //Enlazamos las variables con sus respectivos botones o entradas
         UsuarioL = (EditText)findViewById(R.id.User);
         PasswordL = (EditText)findViewById(R.id.Password);
         entL=(Button)findViewById(R.id.btnIniciar);
         regisL=(Button)findViewById(R.id.btnRegistrarse);
         olvidastecontraseña = findViewById(R.id.olvidastecontra);
 
+        //Se asignan los eventos
         entL.setOnClickListener(this);
         regisL.setOnClickListener(this);
         dao = new daoUsuario( this);
@@ -44,10 +46,13 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnIniciar:
+                //Recibir usuario y contraseña
                 String u=UsuarioL.getText().toString();
                 String p=PasswordL.getText().toString();
+                //Si estan vacios, retorne error
                 if (u.equals("")&&p.equals("")){
                     Toast.makeText(this, "ERROR: Campos vacios", Toast.LENGTH_LONG).show();
+                    //Si estan los campos llenos y el usuario está registrado, inicia sesión
                 }else if (dao.login(u,p)==1){
                     Usuario ux = dao.getUsuario(u,p);
                     Toast.makeText(this, "Datos correctos", Toast.LENGTH_LONG).show();
@@ -56,6 +61,7 @@ public class Main extends AppCompatActivity implements View.OnClickListener {
                             startActivity(i2);
                             finish();
                 }else {
+                    //si no se cumplen los anteriores nos muestra error por datos incorrectos o inexistentes
                     Toast.makeText(this, "Email y/o Password incorrectos", Toast.LENGTH_LONG).show();
 
                 }

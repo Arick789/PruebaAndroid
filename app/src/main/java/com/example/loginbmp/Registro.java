@@ -18,6 +18,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro);
+        //Enlazamos las variables con sus respectivos botones o entradas
         us = (EditText)findViewById(R.id.RegUser);
         pas = (EditText)findViewById(R.id.PasswordR);
         ema = (EditText)findViewById(R.id.EmailR);
@@ -26,6 +27,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         regR=(Button)findViewById(R.id.btnRegistrar);
         canR=(Button)findViewById(R.id.btnCancelar);
 
+        //Se asignan los eventos
         regR.setOnClickListener(this);
         canR.setOnClickListener(this);
         dao= new daoUsuario(this);
@@ -36,6 +38,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()){
             case R.id.btnRegistrar:
                 Usuario u = new Usuario();
+                //Recuperar cada uno de los valores
                 u.setUsuario(us.getText().toString());
                 u.setPassword(pas.getText().toString());
                 u.setEmail(ema.getText().toString());
